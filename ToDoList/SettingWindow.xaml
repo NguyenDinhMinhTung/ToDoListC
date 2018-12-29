@@ -1,0 +1,40 @@
+﻿<Window x:Class="ToDoList.SettingWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ToDoList"
+        mc:Ignorable="d"
+        Title="SettingWindow" Height="193.433" Width="300"
+                 xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+     TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+     TextElement.FontWeight="Regular"
+     TextElement.FontSize="13"
+     TextOptions.TextFormattingMode="Ideal"
+     TextOptions.TextRenderingMode="Auto"
+     Background="{DynamicResource MaterialDesignPaper}"
+     FontFamily="{DynamicResource MaterialDesignFont}" WindowStyle="None" ShowInTaskbar="False" ResizeMode="NoResize" Loaded="Window_Loaded">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <local:TitleBar DataContext="設定"></local:TitleBar>
+        <Border BorderBrush="#673AB7"  BorderThickness="2 0 2 2" Grid.Row="1">
+            <StackPanel Margin="10 10 10 10">
+                <CheckBox>Windowsと同時に起動する。</CheckBox>
+                <DockPanel Margin="0 10 0 0">
+                    <TextBlock Margin="0 0 10 0">透明度:</TextBlock>
+                    <TextBlock Name="txtTransparent" DockPanel.Dock="Right" Width="30" Margin="10 0 0 0"></TextBlock>
+                <Slider Name="sliTransparent" TickFrequency="5"
+                        Orientation="Horizontal"
+                        Minimum="10"
+                        Maximum="100"
+                        Value="100" />
+                </DockPanel>
+                <Button Name="btnOK" Margin="50 50 50 10">OK</Button>
+            </StackPanel>
+        </Border>
+    </Grid>
+</Window>

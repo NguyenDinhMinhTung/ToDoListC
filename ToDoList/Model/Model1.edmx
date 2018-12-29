@@ -1,0 +1,121 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="TODOLISTDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="EVENS">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="evenid" Type="int" Nullable="false" />
+          <Property Name="evenname" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="type" Type="int" Nullable="false" />
+          <Property Name="daytime" Type="datetime" Nullable="false" />
+          <Property Name="notiday" Type="int" Nullable="false" />
+          <Property Name="status" Type="bit" Nullable="false" />
+          <Property Name="color" Type="int" Nullable="false" />
+          <Property Name="objectid" Type="int" />
+          <Property Name="comment" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="SYNCQUEUES">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="evenid" Type="int" Nullable="false" />
+          <Property Name="status" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="TODOLISTDBModelStoreContainer">
+          <EntitySet Name="EVENS" EntityType="Self.EVENS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SYNCQUEUES" EntityType="Self.SYNCQUEUES" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TODOLISTDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="EVEN">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="evenid" Type="Int32" Nullable="false" />
+          <Property Name="evenname" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="type" Type="Int32" Nullable="false" />
+          <Property Name="daytime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="notiday" Type="Int32" Nullable="false" />
+          <Property Name="status" Type="Boolean" Nullable="false" />
+          <Property Name="color" Type="Int32" Nullable="false" />
+          <Property Name="objectid" Type="Int32" />
+          <Property Name="comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="SYNCQUEUE">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="evenid" Type="Int32" Nullable="false" />
+          <Property Name="status" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="TODOLISTDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="EVENS" EntityType="Self.EVEN" />
+          <EntitySet Name="SYNCQUEUES" EntityType="Self.SYNCQUEUE" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="TODOLISTDBModelStoreContainer" CdmEntityContainer="TODOLISTDBEntities">
+          <EntitySetMapping Name="EVENS">
+            <EntityTypeMapping TypeName="TODOLISTDBModel.EVEN">
+              <MappingFragment StoreEntitySet="EVENS">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="evenid" ColumnName="evenid" />
+                <ScalarProperty Name="evenname" ColumnName="evenname" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="daytime" ColumnName="daytime" />
+                <ScalarProperty Name="notiday" ColumnName="notiday" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="color" ColumnName="color" />
+                <ScalarProperty Name="objectid" ColumnName="objectid" />
+                <ScalarProperty Name="comment" ColumnName="comment" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SYNCQUEUES">
+            <EntityTypeMapping TypeName="TODOLISTDBModel.SYNCQUEUE">
+              <MappingFragment StoreEntitySet="SYNCQUEUES">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="evenid" ColumnName="evenid" />
+                <ScalarProperty Name="status" ColumnName="status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="なし" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

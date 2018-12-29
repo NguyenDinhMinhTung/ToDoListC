@@ -1,0 +1,32 @@
+﻿<UserControl x:Class="ToDoList.EvenItem"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ToDoList"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             FontFamily="{DynamicResource MaterialDesignFont}">
+    <materialDesign:Card Name="mainCard" Padding="10 10 0 10" Margin="10 5 10 5">
+        <DockPanel>
+            <CheckBox Name="ckbDone" DockPanel.Dock="Left" Margin="0 0 5 0" Click="ckbDone_Click"/>
+            <materialDesign:PopupBox Name="popupBox" DockPanel.Dock="Right">
+                <ListBox>
+                    <ListBoxItem Name="mnuEdit" MouseUp="mnuEdit_MouseUp">編集</ListBoxItem>
+                    <ListBoxItem Name="mnuDelete" Selected="mnuDelete_Selected">削除</ListBoxItem>
+                </ListBox>
+            </materialDesign:PopupBox>
+            <StackPanel>
+                <DockPanel>
+                    <Border Name="borTime"  DockPanel.Dock="Right" CornerRadius="5" Padding="4 1 4 1">
+                        <TextBlock Name="txtTime" TextAlignment="Right" VerticalAlignment="Center">10:00-12:00
+                        </TextBlock>
+                    </Border>
+                    <TextBlock Name="txtEvenName" FontSize="16">EVEN NAME</TextBlock>
+                </DockPanel>
+                <TextBlock Name="txtComment" FontStyle="Italic">Comment</TextBlock>
+            </StackPanel>
+        </DockPanel>
+    </materialDesign:Card>
+</UserControl>

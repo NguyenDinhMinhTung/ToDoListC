@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="TODOLISTDBModelStoreContainer" CdmEntityContainer="TODOLISTDBEntities">
+    <EntitySetMapping Name="EVENS">
+      <EntityTypeMapping TypeName="TODOLISTDBModel.EVEN">
+        <MappingFragment StoreEntitySet="EVENS">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="evenid" ColumnName="evenid" />
+          <ScalarProperty Name="evenname" ColumnName="evenname" />
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="daytime" ColumnName="daytime" />
+          <ScalarProperty Name="notiday" ColumnName="notiday" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="color" ColumnName="color" />
+          <ScalarProperty Name="objectid" ColumnName="objectid" />
+          <ScalarProperty Name="comment" ColumnName="comment" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SYNCQUEUES">
+      <EntityTypeMapping TypeName="TODOLISTDBModel.SYNCQUEUE">
+        <MappingFragment StoreEntitySet="SYNCQUEUES">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="evenid" ColumnName="evenid" />
+          <ScalarProperty Name="status" ColumnName="status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

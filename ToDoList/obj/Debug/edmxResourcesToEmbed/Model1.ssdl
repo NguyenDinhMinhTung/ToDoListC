@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TODOLISTDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <!--生成中に見つかったエラー:
+警告 6002: テーブル/ビュー 'TODOLISTDB.dbo.EVENS' には主キーが定義されていません。主キーは推論され、定義は読み取り専用のテーブル/ビューとして作成されました。-->
+  <EntityType Name="EVENS">
+    <Key>
+      <PropertyRef Name="id" />
+      <PropertyRef Name="evenname" />
+      <PropertyRef Name="type" />
+      <PropertyRef Name="daytime" />
+      <PropertyRef Name="notiday" />
+      <PropertyRef Name="status" />
+      <PropertyRef Name="color" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="evenname" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="type" Type="int" Nullable="false" />
+    <Property Name="daytime" Type="datetime" Nullable="false" />
+    <Property Name="notiday" Type="int" Nullable="false" />
+    <Property Name="status" Type="bit" Nullable="false" />
+    <Property Name="color" Type="int" Nullable="false" />
+    <Property Name="objectid" Type="int" />
+    <Property Name="comment" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="SYNCQUEUES">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="evenid" Type="int" Nullable="false" />
+    <Property Name="status" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="TODOLISTDBModelStoreContainer">
+    <EntitySet Name="SYNCQUEUES" EntityType="Self.SYNCQUEUES" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EVENS" EntityType="Self.EVENS" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [EVENS].[id] AS [id], 
+    [EVENS].[evenname] AS [evenname], 
+    [EVENS].[type] AS [type], 
+    [EVENS].[daytime] AS [daytime], 
+    [EVENS].[notiday] AS [notiday], 
+    [EVENS].[status] AS [status], 
+    [EVENS].[color] AS [color], 
+    [EVENS].[objectid] AS [objectid], 
+    [EVENS].[comment] AS [comment]
+    FROM [dbo].[EVENS] AS [EVENS]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>

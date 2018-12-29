@@ -1,0 +1,97 @@
+﻿<Window x:Class="ToDoList.AddWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ToDoList"
+        mc:Ignorable="d"
+        Title="AddWindow" Height="336.583" Width="317"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+     TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+     TextElement.FontWeight="Regular"
+     TextElement.FontSize="13"
+     TextOptions.TextFormattingMode="Ideal"
+     TextOptions.TextRenderingMode="Auto"
+     Background="{DynamicResource MaterialDesignPaper}"
+     FontFamily="{DynamicResource MaterialDesignFont}" ResizeMode="NoResize" WindowStyle="None">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        
+        <local:TitleBar DataContext="追加" Grid.Row="0"></local:TitleBar>
+        <Border BorderBrush="#673AB7"  BorderThickness="2 0 2 2" Grid.Row="1">
+            <StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="10">
+                    <TextBlock Width="70" VerticalAlignment="Center" FontSize="14">タイトル:</TextBlock>
+                    <TextBox Name="txtTitle" Width="140" FontSize="14"></TextBox>
+                    <CheckBox Name="ckbAllDay" Width="50" Click="ckbAllDay_Click" Margin="20 0 0 0" >全日</CheckBox>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" Margin="10">
+                    <TextBlock Width="70" VerticalAlignment="Center" FontSize="14">時間:</TextBlock>
+                    <DatePicker
+                Name="sltDate"
+                Width="100"
+                materialDesign:HintAssist.Hint="日付選択"
+                Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
+                    <materialDesign:TimePicker
+                Name="sltTime"
+                Width="100"
+                Margin="10 0 0 0"
+                VerticalAlignment="Bottom"
+                Style="{StaticResource MaterialDesignFloatingHintTimePicker}"
+                materialDesign:HintAssist.Hint="時間選択"
+                Is24Hours="True"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" Margin="10">
+                    <TextBlock Width="70" VerticalAlignment="Center" FontSize="14">通知:</TextBlock>
+                    <ComboBox Name="cbbNofification" Width="210" SelectedIndex="0" HorizontalContentAlignment="Center" SelectionChanged="cbbNofification_SelectionChanged">
+                        <!--<ComboBoxItem>当日</ComboBoxItem>
+                        <ComboBoxItem>一日前</ComboBoxItem>
+                        <ComboBoxItem>一週間前</ComboBoxItem>
+                        <ComboBoxItem>一カ月前</ComboBoxItem>
+                        <ComboBoxItem>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                <TextBox TextAlignment="Center" Width="40"></TextBox>
+                                <TextBlock VerticalAlignment="Center">日前</TextBlock>
+                                <Button Margin="10 0 0 0">OK</Button>
+                            </StackPanel>
+                        </ComboBoxItem>-->
+                    </ComboBox>
+                </StackPanel>
+
+                <DockPanel Margin="10">
+                    <Border Name="boxColor" DockPanel.Dock="Right" BorderThickness="0.5" BorderBrush="Black" Margin="0 0 20 0" Width="30" CornerRadius="2">
+                    </Border>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Width="70" VerticalAlignment="Center" FontSize="14">色:</TextBlock>
+                        <ComboBox Name="cbbColor" Width="150" SelectedIndex="0" HorizontalContentAlignment="Center" SelectionChanged="cbbColor_SelectionChanged">
+                            <ComboBoxItem>White</ComboBoxItem>
+                            <ComboBoxItem>Red</ComboBoxItem>
+                            <ComboBoxItem>Green</ComboBoxItem>
+                            <ComboBoxItem>Yellow</ComboBoxItem>
+                            <ComboBoxItem>Magenta</ComboBoxItem>
+                        </ComboBox>
+                    </StackPanel>
+                </DockPanel>
+
+                <StackPanel Orientation="Horizontal" Margin="10">
+                    <TextBlock Width="70" VerticalAlignment="Center" FontSize="14">コメント:</TextBlock>
+                    <TextBox Name="txtComment" Width="210" FontSize="14"></TextBox>
+                </StackPanel>
+
+                <Grid Margin="10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Button Name="btnOK" Content="OK" Width="100" Grid.Column="0" HorizontalAlignment="Left" Click="btnOK_Click"/>
+                    <Button Name="btnCancel" Content="Cancel" Width="100" Grid.Column="1" HorizontalAlignment="Right" Click="btnCancel_Click"></Button>
+                </Grid>
+            </StackPanel>
+        </Border>
+    </Grid>
+</Window>

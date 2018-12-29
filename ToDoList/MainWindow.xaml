@@ -1,0 +1,54 @@
+﻿<Window x:Class="ToDoList.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ToDoList"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="305.603"
+         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+     TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+     TextElement.FontWeight="Regular"
+     TextElement.FontSize="13"
+     TextOptions.TextFormattingMode="Ideal"
+     TextOptions.TextRenderingMode="Auto"
+     Background="{DynamicResource MaterialDesignPaper}"
+     FontFamily="{DynamicResource MaterialDesignFont}" WindowStyle="None" ShowInTaskbar="False" ResizeMode="NoResize" Loaded="Window_Loaded" AllowsTransparency="True">
+    <Border Name="borMain" BorderBrush="#673AB7"  BorderThickness="2 0 2 2" MouseDown="borMain_MouseDown" PreviewDragEnter="borMain_PreviewDragEnter" DragEnter="borMain_DragEnter">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+
+            <materialDesign:ColorZone
+        Mode="PrimaryMid" MouseMove="ColorZone_MouseMove">
+                <DockPanel>
+                    <materialDesign:PopupBox DockPanel.Dock="Right">
+                        <StackPanel>
+                            <CheckBox Name="ckbCanResize" Margin="5 5 5 5" Checked="ckbCanResize_Checked" Unchecked="ckbCanResize_Unchecked">Can Resize</CheckBox>
+                            <ListBoxItem Name="mnuSetting" MouseUp="mnuSetting_MouseUp">Setting</ListBoxItem>
+                            <Separator/>
+                            <ListBoxItem Name="mnuClose" MouseUp="mnuClose_MouseUp">Close</ListBoxItem>
+                        </StackPanel>
+                    </materialDesign:PopupBox>
+                    <materialDesign:PackIcon Kind="AddBox" DockPanel.Dock="Right" Height="35" Width="35" MouseUp="btnAdd_MouseUp" />
+                    <materialDesign:PackIcon Name="btnSync" Kind="Sync" DockPanel.Dock="Right" Height="35" Width="35" MouseUp="btnSync_MouseUp" />
+                    <TextBlock Name="txtTitle" VerticalAlignment="Center" Margin="10 10 10 10">To Do List</TextBlock>
+                </DockPanel>
+            </materialDesign:ColorZone>
+
+            <ScrollViewer Grid.Row="1" Name="mainViewer" VerticalScrollBarVisibility="Hidden">
+            </ScrollViewer>
+
+            <StackPanel Grid.Row="2">
+                <Separator/>
+                <TextBlock Name="txtLastUpdate" Text="Last Update" TextAlignment="Center" VerticalAlignment="Center" Height="20"/>
+            </StackPanel>
+            <DockPanel Grid.Row="2">
+                <materialDesign:PackIcon Name="btnResize" Kind="ResizeBottomRight" DockPanel.Dock="Right" HorizontalAlignment="Right" VerticalAlignment="Bottom" />
+            </DockPanel>
+        </Grid>
+    </Border>
+</Window>
