@@ -132,8 +132,6 @@ namespace ToDoList
             request.Credentials = CredentialCache.DefaultCredentials;
             // Get the response.  
             WebResponse response = request.GetResponse();
-            // Display the status.  
-            Console.WriteLine(((HttpWebResponse)response).StatusDescription);
             // Get the stream containing content returned by the server.  
             Stream dataStream = response.GetResponseStream();
             // Open the stream using a StreamReader for easy access.  

@@ -48,5 +48,10 @@ namespace ToDoList
         {
             sliTransparent.ValueChanged += sliTransparent_ValueChanged;
         }
+
+        private void btnOK_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }

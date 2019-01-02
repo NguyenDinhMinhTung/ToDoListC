@@ -29,11 +29,11 @@
                     <TextBlock Name="txtTransparent" DockPanel.Dock="Right" Width="30" Margin="10 0 0 0"></TextBlock>
                 <Slider Name="sliTransparent" TickFrequency="5"
                         Orientation="Horizontal"
-                        Minimum="10"
+                        Minimum="40"
                         Maximum="100"
                         Value="100" />
                 </DockPanel>
-                <Button Name="btnOK" Margin="50 50 50 10">OK</Button>
+                <Button Name="btnOK" Margin="50 50 50 10" Click="btnOK_Click">OK</Button>
             </StackPanel>
         </Border>
     </Grid>
