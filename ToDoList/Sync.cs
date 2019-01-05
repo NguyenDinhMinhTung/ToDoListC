@@ -49,7 +49,8 @@ namespace ToDoList
                 }
 
                 Model.DataProvider.Ins.DB.SaveChanges();
-            }catch(Exception e) { }
+            }
+            catch (Exception e) { }
         }
 
         public static int getLocalVersion()
@@ -79,13 +80,14 @@ namespace ToDoList
                         string[] pre = { "</br>" };
                         string[] list = result.Split(pre, StringSplitOptions.None);
 
-                        Model.DataProvider.Ins.DB.Database.ExecuteSqlCommand("DELETE FROM EVENS");
-
-                        foreach (string s in list)
+                        if (list[0].Equals("SUCCESS") && list[list.Length - 1].Equals("END"))
                         {
-                            if (!String.IsNullOrEmpty(s))
+                            Model.DataProvider.Ins.DB.Database.ExecuteSqlCommand("DELETE FROM EVENS");
+
+                            for (int i = 1; i < list.Length - 1; i++)
                             {
-                                string[] evenItem = s.Split('|');
+                                string[] evenItem = list[i].Split('|');
+
                                 Model.EVEN even = new Model.EVEN();
                                 even.evenid = int.Parse(evenItem[0]);
                                 even.evenname = evenItem[1];
@@ -98,6 +100,7 @@ namespace ToDoList
                                 even.comment = evenItem[8];
 
                                 Model.DataProvider.Ins.DB.EVENS.Add(even);
+
                             }
                         }
 
@@ -106,7 +109,8 @@ namespace ToDoList
                 }
 
                 Properties.Settings.Default.lastUpdate = DateTime.Now;
-            }catch (Exception e) { }
+            }
+            catch (Exception e) { }
         }
 
         public static int getServerVersion()

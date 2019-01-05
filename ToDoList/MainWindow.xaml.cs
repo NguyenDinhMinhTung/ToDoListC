@@ -210,7 +210,10 @@ namespace ToDoList
 
         private void btnSync_MouseUp(object sender, MouseButtonEventArgs e)
         {
+            Sync.StartSyncToServer();
             syncFromServer();
+
+            updateEvenList();
         }
 
         private void borMain_MouseDown(object sender, MouseButtonEventArgs e)
