@@ -127,7 +127,7 @@ namespace ToDoList
             return -1;
         }
 
-        private static string Request(string url)
+        public static string Request(string url)
         {
             string responseFromServer = "";
             // Create a request for the URL.   
