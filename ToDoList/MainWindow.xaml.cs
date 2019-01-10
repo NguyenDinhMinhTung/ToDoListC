@@ -28,7 +28,6 @@ namespace ToDoList
         {
             InitializeComponent();
 
-            MessageBox.Show(Sync.Request(@"http://www.gipc.akita-u.ac.jp/~civil/ce_only/souzou/2017/index.html"));
             var currentDPI = (int)Registry.GetValue("HKEY_CURRENT_USER\\Control Panel\\Desktop\\WindowMetrics", "AppliedDPI", 96);
             var scale = 96 / (float)currentDPI;
 
