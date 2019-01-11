@@ -17,5 +17,6 @@ namespace ToDoList.Model
         public int id { get; set; }
         public int evenid { get; set; }
         public bool status { get; set; }
+        public int type { get; set; }
     }
 }

@@ -104,8 +104,8 @@ namespace ToDoList
                 if (compareDay(startDay, DateTime.Now) <= 0)
                 {
                     stackItem.Children.Add(new EvenItem(even, DateTime.Now,
-                        (status) => { even.status = status; Model.DataProvider.Ins.DB.SaveChanges(); Sync.PushToSyncQueue(even.evenid); Sync.StartSyncToServer(); },
-                        () => { Model.DataProvider.Ins.DB.EVENS.Remove(even); Model.DataProvider.Ins.DB.SaveChanges(); updateEvenList(); },
+                        (status) => { even.status = status; Model.DataProvider.Ins.DB.SaveChanges(); Sync.PushToSyncQueue(even.id, 1); Sync.StartSyncToServer(); },
+                        () => { Sync.PushToSyncQueue(even.evenid, 2); Model.DataProvider.Ins.DB.EVENS.Remove(even); Model.DataProvider.Ins.DB.SaveChanges(); Sync.StartSyncToServer(); syncFromServer(); updateEvenList(); },
                         () => { new AddWindow(even).ShowDialog(); updateEvenList(); }));
                     hasEvenToday = true;
                 }
@@ -130,8 +130,8 @@ namespace ToDoList
                     }
 
                     stackItem.Children.Add(new EvenItem(even, null,
-                        (status) => { even.status = status; Model.DataProvider.Ins.DB.SaveChanges(); Sync.PushToSyncQueue(even.evenid); Sync.StartSyncToServer(); },
-                        () => { Model.DataProvider.Ins.DB.EVENS.Remove(even); Model.DataProvider.Ins.DB.SaveChanges(); updateEvenList(); },
+                        (status) => { even.status = status; Model.DataProvider.Ins.DB.SaveChanges(); Sync.PushToSyncQueue(even.id, 1); Sync.StartSyncToServer(); },
+                        () => { Sync.PushToSyncQueue(even.evenid, 2); Model.DataProvider.Ins.DB.EVENS.Remove(even); Model.DataProvider.Ins.DB.SaveChanges();Sync.StartSyncToServer(); syncFromServer(); updateEvenList(); },
                         () => { new AddWindow(even).ShowDialog(); updateEvenList(); }));
                 }
             }

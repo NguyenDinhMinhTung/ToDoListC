@@ -22,6 +22,7 @@
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="evenid" Type="int" Nullable="false" />
     <Property Name="status" Type="bit" Nullable="false" />
+    <Property Name="type" Type="int" Nullable="false" />
   </EntityType>
   <EntityContainer Name="TODOLISTDBModelStoreContainer">
     <EntitySet Name="EVENS" EntityType="Self.EVENS" Schema="dbo" store:Type="Tables" />

@@ -14,7 +14,7 @@ namespace ToDoList
         static string get_url = "http://127.0.0.1/get_data.php";
         static string check_version_url = "http://127.0.0.1/check_version.php";
 
-        public static void PushToSyncQueue(int evenid)
+        public static void PushToSyncQueue(int evenid, int type)
         {
             var check = Model.DataProvider.Ins.DB.SYNCQUEUES.Where(p => p.status == false && evenid == p.evenid).Count();
             if (check > 0) return;
@@ -22,6 +22,7 @@ namespace ToDoList
             Model.SYNCQUEUE syncItem = new Model.SYNCQUEUE();
             syncItem.evenid = evenid;
             syncItem.status = false;
+            syncItem.type = type;
             Model.DataProvider.Ins.DB.SYNCQUEUES.Add(syncItem);
             Model.DataProvider.Ins.DB.SaveChanges();
         }
@@ -34,19 +35,30 @@ namespace ToDoList
 
                 foreach (Model.SYNCQUEUE item in list)
                 {
-                    var even = Model.DataProvider.Ins.DB.EVENS.Where(p => p.evenid == item.evenid).FirstOrDefault();
-                    if (even != null)
-                    {
-                        string url = String.Format(push_url + "?evenid={0}&evenname={1}&type={2}&daytime={3}&notiday={4}&status={5}&color={6}&objectid={7}&comment={8}",
-                            even.evenid, even.evenname, even.type, even.daytime, even.notiday, even.status ? 1 : 0, even.color, even.objectid, even.comment);
-                        var result = Request(url);
+                    string url = "";
 
-                        if (result.Equals("OK"))
+                    if (item.type == 1)
+                    {
+                        var even = Model.DataProvider.Ins.DB.EVENS.Where(p => p.id == item.evenid).FirstOrDefault();
+                        if (even != null)
                         {
-                            item.status = true;
+                            url = String.Format(push_url + "?evenid={0}&evenname={1}&type={2}&daytime={3}&notiday={4}&status={5}&color={6}&objectid={7}&comment={8}",
+                                even.evenid, even.evenname, even.type, even.daytime, even.notiday, even.status ? 1 : 0, even.color, even.objectid, even.comment);
                         }
                     }
+                    else if (item.type == 2)
+                    {
+                        url = $"{push_url}?delete_id={item.evenid}";
+                    }
+
+                    var result = Request(url);
+
+                    if (result.Equals("OK"))
+                    {
+                        item.status = true;
+                    }
                 }
+
 
                 Model.DataProvider.Ins.DB.SaveChanges();
             }

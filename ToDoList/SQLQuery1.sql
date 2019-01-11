@@ -4,26 +4,28 @@
 USE TODOLISTDB
 GO
 
--- DELETE FROM SYNCQUEUES;
+--Drop table SYNCQUEUES;
+DELETE FROM SYNCQUEUES;
 --CREATE TABLE SYNCQUEUES(
 --	id INT PRIMARY KEY IDENTITY,
 --	evenid INT NOT NULL,
---	status BIT NOT NULL
+--	status BIT NOT NULL,
+--	type INT NOT NULL
 --);
 
-CREATE TABLE EVENS(
-	id INT PRIMARY KEY IDENTITY,
-	evenid INT NOT NULL,
-	evenname NVARCHAR(max) NOT NULL,
-	type INT NOT NULL,
-	daytime DATETIME NOT NULL,
-	notiday INT NOT NULL,
-	status BIT NOT NULL,
-	color INT NOT NULL,
-	objectid INT,
-	comment NVARCHAR(max)
-);
-GO
+--CREATE TABLE EVENS(
+--	id INT PRIMARY KEY IDENTITY,
+--	evenid INT NOT NULL,
+--	evenname NVARCHAR(max) NOT NULL,
+--	type INT NOT NULL,
+--	daytime DATETIME NOT NULL,
+--	notiday INT NOT NULL,
+--	status BIT NOT NULL,
+--	color INT NOT NULL,
+--	objectid INT,
+--	comment NVARCHAR(max)
+--);
+--GO
 
 --USE TODOLISTDB
 --GO

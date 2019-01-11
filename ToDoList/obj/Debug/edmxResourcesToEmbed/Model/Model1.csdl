@@ -22,6 +22,7 @@
     <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="evenid" Type="Int32" Nullable="false" />
     <Property Name="status" Type="Boolean" Nullable="false" />
+    <Property Name="type" Type="Int32" Nullable="false" />
   </EntityType>
   <EntityContainer Name="TODOLISTDBEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="EVENS" EntityType="Self.EVEN" />

@@ -20,6 +20,7 @@
     <EntitySetMapping Name="SYNCQUEUES">
       <EntityTypeMapping TypeName="TODOLISTDBModel.SYNCQUEUE">
         <MappingFragment StoreEntitySet="SYNCQUEUES">
+          <ScalarProperty Name="type" ColumnName="type" />
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="evenid" ColumnName="evenid" />
           <ScalarProperty Name="status" ColumnName="status" />

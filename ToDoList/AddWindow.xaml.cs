@@ -178,7 +178,7 @@ namespace ToDoList
                 if (even == null)
                 {
                     even = new Model.EVEN();
-                    even.evenid = Util.getNewId();
+                    even.evenid = -1;
                     Model.DataProvider.Ins.DB.EVENS.Add(even);
                 }
 
@@ -193,7 +193,7 @@ namespace ToDoList
 
                 Model.DataProvider.Ins.DB.SaveChanges();
 
-                Sync.PushToSyncQueue(even.evenid);
+                Sync.PushToSyncQueue(even.id, 1);
                 Sync.StartSyncToServer();
 
                 Close();
